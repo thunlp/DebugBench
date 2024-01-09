@@ -1,0 +1,244 @@
+[
+  {
+    "answer_json": {
+      "data": {
+        "solutionArticle": {
+          "ipRegion": "美国",
+          "rewardEnabled": null,
+          "canEditReward": false,
+          "uuid": "qZt8tg",
+          "title": "BFT解法还是很精妙的。",
+          "slug": "bftjie-fa-huan-shi-hen-jing-miao-de-by-j-w8z2",
+          "sunk": false,
+          "chargeType": "FREE",
+          "status": "PUBLISHED",
+          "identifier": "qZt8tg",
+          "canEdit": false,
+          "canSee": true,
+          "reactionType": null,
+          "reactionsV2": [],
+          "tags": [
+            {
+              "name": "Python",
+              "nameTranslated": "",
+              "slug": "python",
+              "tagType": "LANGUAGE"
+            }
+          ],
+          "createdAt": "2021-04-23T04:33:45.565213+00:00",
+          "thumbnail": "",
+          "author": {
+            "username": "jliang2010",
+            "isDiscussAdmin": false,
+            "isDiscussStaff": false,
+            "profile": {
+              "userAvatar": "https://assets.leetcode.cn/aliyun-lc-upload/users/jliang2010/avatar_1663107964.png",
+              "userSlug": "jliang2010",
+              "realName": "jliang2010",
+              "reputation": 3
+            }
+          },
+          "summary": "解题思路\n此处撰写解题思路\n代码",
+          "topic": {
+            "id": 739346,
+            "subscribed": false,
+            "commentCount": 0,
+            "viewCount": 14,
+            "post": {
+              "id": 1645809,
+              "status": "Open",
+              "voteStatus": 0,
+              "isOwnPost": false
+            }
+          },
+          "byLeetcode": false,
+          "isMyFavorite": false,
+          "isMostPopular": false,
+          "favoriteCount": 0,
+          "isEditorsPick": false,
+          "hitCount": 19,
+          "videosInfo": [],
+          "content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```python3\n# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, x):\n#         self.val = x\n#         self.left = None\n#         self.right = None\n\nclass Solution:\n    def sumEvenGrandparent(self, root: TreeNode) -> int:\n        queue=[root]\n        ret=0\n        while queue:\n            n=len(queue)\n            for i in range(n):\n                node=queue.pop(0)\n                if node.val%2==0:\n                    if node.left:\n                        if node.left.left:\n                            ret+=node.left.left.val\n                        if node.left.right:\n                            ret+=node.left.right.val\n                    if node.right:\n                        if node.right.left:\n                            ret+=node.right.left.val\n                        if node.right.right:\n                            ret+=node.right.right.val\n                if node.left:\n                    queue.append(node.left)\n                if node.right:\n                    queue.append(node.right)\n        return ret\n\n            \n```",
+          "next": {
+            "slug": "zu-fu-jie-dian-zhi-wei-ou-shu-de-jie-dian-he-by-2",
+            "title": "祖父节点值为偶数的节点和"
+          },
+          "prev": null
+        }
+      }
+    },
+    "answer_slug": "bftjie-fa-huan-shi-hen-jing-miao-de-by-j-w8z2",
+    "answer_title": "BFT解法还是很精妙的。",
+    "answer_uuid": "qZt8tg",
+    "title": "Sum of Nodes with Even-Valued Grandparent",
+    "title_cn": "祖父节点值为偶数的节点和",
+    "title_slug": "sum-of-nodes-with-even-valued-grandparent"
+  },
+  {
+    "answer_json": {
+      "data": {
+        "solutionArticle": {
+          "ipRegion": "上海",
+          "rewardEnabled": null,
+          "canEditReward": false,
+          "uuid": "zqtj9z",
+          "title": "双指针",
+          "slug": "shuang-zhi-zhen-by-jason-2-k3eh",
+          "sunk": false,
+          "chargeType": "FREE",
+          "status": "PUBLISHED",
+          "identifier": "zqtj9z",
+          "canEdit": false,
+          "canSee": true,
+          "reactionType": null,
+          "reactionsV2": [
+            {
+              "count": 1,
+              "reactionType": "UPVOTE"
+            }
+          ],
+          "tags": [
+            {
+              "name": "Two Pointers",
+              "nameTranslated": "双指针",
+              "slug": "two-pointers",
+              "tagType": "TOPIC"
+            },
+            {
+              "name": "C++",
+              "nameTranslated": "",
+              "slug": "cpp",
+              "tagType": "LANGUAGE"
+            }
+          ],
+          "createdAt": "2021-03-25T09:04:46.478387+00:00",
+          "thumbnail": "",
+          "author": {
+            "username": "jason-2",
+            "isDiscussAdmin": false,
+            "isDiscussStaff": false,
+            "profile": {
+              "userAvatar": "https://assets.leetcode.cn/aliyun-lc-upload/default_avatar.png",
+              "userSlug": "jason-2",
+              "realName": "jason",
+              "reputation": 15
+            }
+          },
+          "summary": "思路：\n指针i，从左向右。\n指针j，从右向左。\n当s[i] == s[j]时，++i,--j\n当s[i] != s[j]时,跳出。\n此时要删除s[i]或s[j]。\n跳过s[i]，从i+1的位置与j开始匹配。如果出现不相等的情况，返回false。\n跳过s[j]，从j-1的位置与i开始匹配。如果出现不相等的情况，返回fal",
+          "topic": {
+            "id": 679629,
+            "subscribed": false,
+            "commentCount": 0,
+            "viewCount": 356,
+            "post": {
+              "id": 1533180,
+              "status": "Open",
+              "voteStatus": 0,
+              "isOwnPost": false
+            }
+          },
+          "byLeetcode": false,
+          "isMyFavorite": false,
+          "isMostPopular": false,
+          "favoriteCount": 0,
+          "isEditorsPick": false,
+          "hitCount": 441,
+          "videosInfo": [],
+          "content": "思路：\n\n指针i，从左向右。\n指针j，从右向左。\n\n当s[i] == s[j]时，++i,--j\n当s[i] != s[j]时,跳出。\n\n此时要删除s[i]或s[j]。\n\n跳过s[i]，从i+1的位置与j开始匹配。如果出现不相等的情况，返回false。\n\n跳过s[j]，从j-1的位置与i开始匹配。如果出现不相等的情况，返回false。\n\n\n\n```cpp\nclass Solution {\npublic:\n    bool validPalindrome(string s) {\n        int i = 0;\n        int j = s.size() - 1;\n        while(i < j){\n            if(s[i] == s[j]){\n                ++i;\n                --j;\n            }else{\n                break;\n            }\n        }\n\n        if(i >= j ){\n            return true;\n        }\n\n        int ii = i+1;\n        int jj = j;\n        while(ii < jj){\n            if(s[ii] != s[jj]){\n                break;\n            }\n            ++ii;\n            --jj;\n        }\n\n        if(ii >= jj){\n            return true;\n        }\n\n        ii = i;\n        jj = j-1;\n        while(ii < jj){\n            if(s[ii] != s[jj]){\n                return false;\n            }\n            ++ii;\n            --jj;\n        }\n\n        return true;\n    }\n};\n```",
+          "next": {
+            "slug": "yan-zheng-hui-wen-zi-fu-chuan-ii-by-leetcode-solut",
+            "title": "验证回文字符串 Ⅱ"
+          },
+          "prev": null
+        }
+      }
+    },
+    "answer_slug": "shuang-zhi-zhen-by-jason-2-k3eh",
+    "answer_title": "双指针",
+    "answer_uuid": "zqtj9z",
+    "title": "Valid Palindrome II",
+    "title_cn": "验证回文串 II",
+    "title_slug": "valid-palindrome-ii"
+  },
+  {
+    "answer_json": {
+      "data": {
+        "solutionArticle": {
+          "ipRegion": "江苏",
+          "rewardEnabled": null,
+          "canEditReward": false,
+          "uuid": "RRcfC3",
+          "title": "编辑距离—dp求解",
+          "slug": "bian-ji-ju-chi-by-upbeat-morseuhu-wh03",
+          "sunk": false,
+          "chargeType": "FREE",
+          "status": "PUBLISHED",
+          "identifier": "RRcfC3",
+          "canEdit": false,
+          "canSee": true,
+          "reactionType": null,
+          "reactionsV2": [],
+          "tags": [
+            {
+              "name": "C++",
+              "nameTranslated": "",
+              "slug": "cpp",
+              "tagType": "LANGUAGE"
+            },
+            {
+              "name": "dp",
+              "nameTranslated": "",
+              "slug": "dp",
+              "tagType": "ADDITIONAL_TOPIC"
+            }
+          ],
+          "createdAt": "2023-01-31T02:30:13.324591+00:00",
+          "thumbnail": "",
+          "author": {
+            "username": "upbeat-morseuhu",
+            "isDiscussAdmin": false,
+            "isDiscussStaff": false,
+            "profile": {
+              "userAvatar": "https://assets.leetcode.cn/aliyun-lc-upload/users/upbeat-morseuhu/avatar_1621592237.png",
+              "userSlug": "upbeat-morseuhu",
+              "realName": "gogo",
+              "reputation": 0
+            }
+          },
+          "summary": "解题思路\n此处撰写解题思路\n 代码\n「代码块」",
+          "topic": {
+            "id": 2084189,
+            "subscribed": false,
+            "commentCount": 0,
+            "viewCount": 0,
+            "post": {
+              "id": 3988461,
+              "status": "Prepub",
+              "voteStatus": 0,
+              "isOwnPost": false
+            }
+          },
+          "byLeetcode": false,
+          "isMyFavorite": false,
+          "isMostPopular": false,
+          "favoriteCount": 0,
+          "isEditorsPick": false,
+          "hitCount": 1,
+          "videosInfo": [],
+          "content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int minDistance(string word1, string word2) \n    {\n        int n = word1.length();\n        int m = word2.length();\n\n        if(n*m == 0) return n+m;//m或n为零，结果为不为零的字符串长度值\n\n        vector<vector<int>> D(n+1,vector<int>(m+1)/*长度为m+1,值默认为0*/);\n\n        //边界状态初始化\n        for(int i=0; i<n+1; ++i){\n            D[i][0] = i;\n        }\n        for(int j=0; j<m+1; ++j){\n            D[0][j] = j;\n        }\n\n        //计算所有DP值\n        for(int i=1; i<n+1; ++i){\n            for(int j=1; j<m+1; ++j)\n            {\n                //dp[i-1][j] +1表示删除操作：0~i-1的word1通过某些操作可以得到0~j的word2，\n                //那么删除word1的i位置字符串再进行dp[i-1][j]操作即可\n\n                //dp[i][j-1] +1表示插入操作：0~i的word1通过某些操作可以得到0~j-1的word2，\n                //那么直接在dp[i][j-1] 操作后【在word1中直接插入word2的j位置字符】\n\n                //dp[i-1][j-1] 表示替换操作：0~i-1的word1已经可以得到0~j-1的word2，\n                //此时分为i，j字符相等和不等两种情况，不等则需要经过一次替换\n\n                int left = D[i][j-1]+1;\n                int down = D[i-1][j] +1;\n                int left_down = D[i-1][j-1];\n                if(word1[i-1] != word2[j-1]) {\n                    left_down +=1;\n                }\n                D[i][j] = min(left,min(down,left_down));\n            }\n        }\n\n        return D[n][m];\n    }\n};\n```",
+          "next": {
+            "slug": "bian-ji-ju-chi-by-leetcode-solution",
+            "title": "编辑距离"
+          },
+          "prev": null
+        }
+      }
+    },
+    "answer_slug": "bian-ji-ju-chi-by-upbeat-morseuhu-wh03",
+    "answer_title": "编辑距离—dp求解",
+    "answer_uuid": "RRcfC3",
+    "title": "Edit Distance",
+    "title_cn": "编辑距离",
+    "title_slug": "edit-distance"
+  }
+]

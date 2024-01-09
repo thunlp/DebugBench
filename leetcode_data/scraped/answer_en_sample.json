@@ -1,0 +1,161 @@
+[
+    {
+        "answer_id": 3641608,
+        "answer_json": {
+            "data": {
+                "topic": {
+                    "id": 3641608,
+                    "viewCount": 396,
+                    "topLevelCommentCount": 2,
+                    "subscribed": false,
+                    "title": "BFS",
+                    "pinned": false,
+                    "solutionTags": [
+                        {
+                            "name": "Python3",
+                            "slug": "python3"
+                        }
+                    ],
+                    "hideFromTrending": false,
+                    "commentCount": 2,
+                    "isFavorite": false,
+                    "post": {
+                        "id": 5575348,
+                        "voteCount": 1,
+                        "voteStatus": 0,
+                        "content": "# Intuition and Approach\\nUsing BFS\\n\\n# Complexity\\n- Time complexity:\\n<!-- Add your time complexity here, e.g. $$O(n)$$ -->\\n\\n- Space complexity:\\n<!-- Add your space complexity here, e.g. $$O(n)$$ -->\\n\\n# Code\\n```\\nclass Solution:\\n    def findCheapestPrice(self, n: int, edges: List[List[int]], src: int, dst: int, k: int) -> int:\\n        adj = [[] for _ in range(n)]\\n        m = len(edges)\\n        for i in range(m):\\n            u, v, w = edges[i]\\n            adj[u].append((v, w))\\n\\n        @lru_cache(None)\\n        def dp(u, k):\\n            if u == dst: return 0 \\n            if k == 0: return math.inf \\n            ans = math.inf \\n            for v, w in adj[u]: \\n                ans = min(ans, w+dp(v, k-1))\\n            return ans \\n\\n        ans = dp(src, k+1)\\n        return ans if ans != math.inf else -1 \\n```",
+                        "updationDate": 1686833882,
+                        "creationDate": 1686833882,
+                        "status": null,
+                        "isHidden": null,
+                        "author": {
+                            "isDiscussAdmin": false,
+                            "isDiscussStaff": false,
+                            "username": "dheerajnbhat",
+                            "nameColor": null,
+                            "activeBadge": null,
+                            "profile": {
+                                "userAvatar": "https://s3-us-west-1.amazonaws.com/s3-lc-upload/assets/default_avatar.jpg",
+                                "reputation": 2
+                            },
+                            "isActive": true
+                        },
+                        "authorIsModerator": false,
+                        "isOwnPost": false
+                    }
+                }
+            }
+        },
+        "answer_title": "BFS",
+        "title": "Cheapest Flights Within K Stops",
+        "title_cn": "K \u7ad9\u4e2d\u8f6c\u5185\u6700\u4fbf\u5b9c\u7684\u822a\u73ed",
+        "title_slug": "cheapest-flights-within-k-stops"
+    },
+    {
+        "answer_id": 2388253,
+        "answer_json": {
+            "data": {
+                "topic": {
+                    "id": 2388253,
+                    "viewCount": 173,
+                    "topLevelCommentCount": 0,
+                    "subscribed": false,
+                    "title": "C++ || HashMap || Counting Breaks || Explained",
+                    "pinned": false,
+                    "solutionTags": [
+                        {
+                            "name": "C",
+                            "slug": "c"
+                        }
+                    ],
+                    "hideFromTrending": false,
+                    "commentCount": 0,
+                    "isFavorite": false,
+                    "post": {
+                        "id": 3920298,
+                        "voteCount": 4,
+                        "voteStatus": 0,
+                        "content": "Count the breaks for each task required by calculating the gap in number of days between current and previous task with same work type.\\nand store index+breaks instead of index.\\n\\n```\\nclass Solution {\\npublic:\\n    long long taskSchedulerII(vector<int>& tasks, int space) {\\n        unordered_map<int,int> mp;\\n        int diff;\\n        long long breaks=0;\\n       \\n        for(int i=0;i<tasks.size();i++)\\n        {\\n            // if the same task was completed previously\\n            if(mp.find(tasks[i])!=mp.end())\\n            {\\n                // calculate the days difference between the two.\\n                diff=breaks+i-mp[tasks[i]];\\n                // if diff is less than or equal to space then increase breaks.\\n                if(diff<=space)\\n                 breaks+=(space+1-diff);         \\n            }   \\n            mp[tasks[i]]=(i+breaks);\\n        }\\n        // return number of breaks+ number of tasks\\n        return (long long)breaks+tasks.size();\\n    }\\n};\\n```\\n\\nTime Complexity: O(N)\\nspace Compleixty: O(N)\\n\\n",
+                        "updationDate": 1659801844,
+                        "creationDate": 1659801844,
+                        "status": null,
+                        "isHidden": null,
+                        "author": {
+                            "isDiscussAdmin": false,
+                            "isDiscussStaff": false,
+                            "username": "Vineet_RaoSahab",
+                            "nameColor": null,
+                            "activeBadge": null,
+                            "profile": {
+                                "userAvatar": "https://assets.leetcode.com/users/raovineet14/avatar_1607327156.png",
+                                "reputation": 346
+                            },
+                            "isActive": true
+                        },
+                        "authorIsModerator": false,
+                        "isOwnPost": false
+                    }
+                }
+            }
+        },
+        "answer_title": "C++ || HashMap || Counting Breaks || Explained",
+        "title": "Task Scheduler II",
+        "title_cn": "\u4efb\u52a1\u8c03\u5ea6\u5668 II",
+        "title_slug": "task-scheduler-ii"
+    },
+    {
+        "answer_id": 3440992,
+        "answer_json": {
+            "data": {
+                "topic": {
+                    "id": 3440992,
+                    "viewCount": 439,
+                    "topLevelCommentCount": 0,
+                    "subscribed": false,
+                    "title": "DP without tricks, easy to understand C++",
+                    "pinned": false,
+                    "solutionTags": [
+                        {
+                            "name": "Dynamic Programming",
+                            "slug": "dynamic-programming"
+                        }
+                    ],
+                    "hideFromTrending": false,
+                    "commentCount": 0,
+                    "isFavorite": false,
+                    "post": {
+                        "id": 5314462,
+                        "voteCount": 2,
+                        "voteStatus": 0,
+                        "content": "It is easy to find it is a DP problem, but to process it gently is not easy.\\nHere is my approch to abstract the problem:\\n1 Enumerate all the possible state\\n2 Find the transition matrix, or connections between status\\n3 Dp with transition matrx/connections\\nThe overall time complexity is O(S^2 * N), space O(S), where S is the state size.\\nIt can be optimized to O(S^3 * logN) with fast matrix exponentiation, when represent the connections as an adjacent matrix.\\nTo optimize the constant further, you can look into the transition matrix to get some insights.\\n\\n```\\nclass Solution {\\n    const int mod = 1e9 + 7;\\npublic:\\n    int numOfWays(int n) {\\n        vector<string> state;\\n        // enumerate the state\\n        for(char i = \\'0\\'; i < \\'3\\'; i++){\\n            for(char j = \\'0\\'; j < \\'3\\'; j++){\\n                if(i == j) continue;\\n                for(char k = \\'0\\'; k < \\'3\\'; k++){\\n                    if(j == k) continue;\\n                    string cur{i,j,k};\\n                    state.push_back(cur);\\n                }\\n            }\\n        }\\n        int s = state.size();\\n        if(n == 1) return s;\\n        // check the connections between status\\n        vector<vector<int>> adj(s);\\n        for(int i = 0; i < s; i++){\\n            for(int j = 0; j < s; j++){\\n                bool compat = true;\\n                for(int k = 0; k < 3; k++){\\n                    if(state[i][k] == state[j][k]){\\n                        compat = false;\\n                        break;\\n                    }\\n                }\\n                if(compat) adj[i].push_back(j);\\n            }\\n        }\\n        // repeat the dp process for n times\\n        vector<int> dp(s, 1);\\n        for(int k = 2; k <= n; k++){\\n            vector<int> dp_next(s, 0);\\n            for(int i = 0; i < s; i++){\\n                for(auto x : adj[i]){\\n                    dp_next[i] += dp[x];\\n                    dp_next[i] %= mod;\\n                }\\n            }\\n            dp = dp_next;\\n        }\\n        int res = 0;\\n        for(int i = 0; i < s; i++){\\n            res += dp[i];\\n            res %= mod;\\n        }\\n        return res;\\n    }\\n};\\n```",
+                        "updationDate": 1682088098,
+                        "creationDate": 1682080646,
+                        "status": null,
+                        "isHidden": null,
+                        "author": {
+                            "isDiscussAdmin": false,
+                            "isDiscussStaff": false,
+                            "username": "gaoyf1235",
+                            "nameColor": null,
+                            "activeBadge": {
+                                "displayName": "Jul LeetCoding Challenge",
+                                "icon": "/static/images/badges/dcc-2023-7.png"
+                            },
+                            "profile": {
+                                "userAvatar": "https://s3-us-west-1.amazonaws.com/s3-lc-upload/assets/default_avatar.jpg",
+                                "reputation": 46
+                            },
+                            "isActive": true
+                        },
+                        "authorIsModerator": false,
+                        "isOwnPost": false
+                    }
+                }
+            }
+        },
+        "answer_title": "DP without tricks, easy to understand C++",
+        "title": "Number of Ways to Paint N \u00d7 3 Grid",
+        "title_cn": "\u7ed9 N x 3 \u7f51\u683c\u56fe\u6d82\u8272\u7684\u65b9\u6848\u6570",
+        "title_slug": "number-of-ways-to-paint-n-3-grid"
+    }
+]

@@ -1,0 +1,130 @@
+[
+    {
+        "chinese_content": {
+            "data": {
+                "question": {
+                    "translatedTitle": "\u6bcf\u53f0\u673a\u5668\u7684\u8fdb\u7a0b\u5e73\u5747\u8fd0\u884c\u65f6\u95f4",
+                    "translatedContent": "<p>\u8868: <code>Activity</code></p>\n\n<pre>\n+----------------+---------+\n| Column Name    | Type    |\n+----------------+---------+\n| machine_id     | int     |\n| process_id     | int     |\n| activity_type  | enum    |\n| timestamp      | float   |\n+----------------+---------+\n\u8be5\u8868\u5c55\u793a\u4e86\u4e00\u5bb6\u5de5\u5382\u7f51\u7ad9\u7684\u7528\u6237\u6d3b\u52a8.\n(machine_id, process_id, activity_type) \u662f\u5f53\u524d\u8868\u7684\u4e3b\u952e.\nmachine_id \u662f\u4e00\u53f0\u673a\u5668\u7684ID\u53f7.\nprocess_id \u662f\u8fd0\u884c\u5728\u5404\u673a\u5668\u4e0a\u7684\u8fdb\u7a0bID\u53f7.\nactivity_type \u662f\u679a\u4e3e\u7c7b\u578b ('start', 'end').\ntimestamp \u662f\u6d6e\u70b9\u7c7b\u578b,\u4ee3\u8868\u5f53\u524d\u65f6\u95f4(\u4ee5\u79d2\u4e3a\u5355\u4f4d).\n'start' \u4ee3\u8868\u8be5\u8fdb\u7a0b\u5728\u8fd9\u53f0\u673a\u5668\u4e0a\u7684\u5f00\u59cb\u8fd0\u884c\u65f6\u95f4\u6233 , 'end' \u4ee3\u8868\u8be5\u8fdb\u7a0b\u5728\u8fd9\u53f0\u673a\u5668\u4e0a\u7684\u7ec8\u6b62\u8fd0\u884c\u65f6\u95f4\u6233.\n\u540c\u4e00\u53f0\u673a\u5668\uff0c\u540c\u4e00\u4e2a\u8fdb\u7a0b\u90fd\u6709\u4e00\u5bf9\u5f00\u59cb\u65f6\u95f4\u6233\u548c\u7ed3\u675f\u65f6\u95f4\u6233\uff0c\u800c\u4e14\u5f00\u59cb\u65f6\u95f4\u6233\u6c38\u8fdc\u5728\u7ed3\u675f\u65f6\u95f4\u6233\u524d\u9762.</pre>\n\n<p>&nbsp;</p>\n\n<p>\u73b0\u5728\u6709\u4e00\u4e2a\u5de5\u5382\u7f51\u7ad9\u7531\u51e0\u53f0\u673a\u5668\u8fd0\u884c\uff0c\u6bcf\u53f0\u673a\u5668\u4e0a\u8fd0\u884c\u7740\u76f8\u540c\u6570\u91cf\u7684\u8fdb\u7a0b. \u8bf7\u5199\u51fa\u4e00\u6761SQL\u8ba1\u7b97\u6bcf\u53f0\u673a\u5668\u5404\u81ea\u5b8c\u6210\u4e00\u4e2a\u8fdb\u7a0b\u4efb\u52a1\u7684\u5e73\u5747\u8017\u65f6.</p>\n\n<p>\u5b8c\u6210\u4e00\u4e2a\u8fdb\u7a0b\u4efb\u52a1\u7684\u65f6\u95f4\u6307\u8fdb\u7a0b\u7684<code>'end' \u65f6\u95f4\u6233</code> \u51cf\u53bb&nbsp;<code>'start' \u65f6\u95f4\u6233</code>. \u5e73\u5747\u8017\u65f6\u901a\u8fc7\u8ba1\u7b97\u6bcf\u53f0\u673a\u5668\u4e0a\u6240\u6709\u8fdb\u7a0b\u4efb\u52a1\u7684\u603b\u8017\u8d39\u65f6\u95f4\u9664\u4ee5\u673a\u5668\u4e0a\u7684\u603b\u8fdb\u7a0b\u6570\u91cf\u83b7\u5f97.</p>\n\n<p>\u7ed3\u679c\u8868\u5fc5\u987b\u5305\u542b<code>machine_id\uff08\u673a\u5668ID\uff09</code> \u548c\u5bf9\u5e94\u7684&nbsp;<strong>average time\uff08\u5e73\u5747\u8017\u65f6\uff09</strong>&nbsp;\u522b\u540d&nbsp;<code>processing_time</code>, \u4e14<strong>\u56db\u820d\u4e94\u5165\u4fdd\u75593\u4f4d\u5c0f\u6570.</strong></p>\n\n<p>\u4ee5 <strong>\u4efb\u610f\u987a\u5e8f</strong> \u8fd4\u56de\u8868\u3002</p>\n\n<p>\u5177\u4f53\u53c2\u8003\u4f8b\u5b50\u5982\u4e0b\u3002</p>\n\n<p>&nbsp;</p>\n\n<p><strong>\u793a\u4f8b 1:</strong></p>\n\n<pre>\n<strong>\u8f93\u5165\uff1a</strong>\nActivity table:\n+------------+------------+---------------+-----------+\n| machine_id | process_id | activity_type | timestamp |\n+------------+------------+---------------+-----------+\n| 0          | 0          | start         | 0.712     |\n| 0          | 0          | end           | 1.520     |\n| 0          | 1          | start         | 3.140     |\n| 0          | 1          | end           | 4.120     |\n| 1          | 0          | start         | 0.550     |\n| 1          | 0          | end           | 1.550     |\n| 1          | 1          | start         | 0.430     |\n| 1          | 1          | end           | 1.420     |\n| 2          | 0          | start         | 4.100     |\n| 2          | 0          | end           | 4.512     |\n| 2          | 1          | start         | 2.500     |\n| 2          | 1          | end           | 5.000     |\n+------------+------------+---------------+-----------+\n<strong>\u8f93\u51fa\uff1a</strong>\n+------------+-----------------+\n| machine_id | processing_time |\n+------------+-----------------+\n| 0          | 0.894           |\n| 1          | 0.995           |\n| 2          | 1.456           |\n+------------+-----------------+\n<strong>\u89e3\u91ca\uff1a</strong>\n\u4e00\u5171\u67093\u53f0\u673a\u5668,\u6bcf\u53f0\u673a\u5668\u8fd0\u884c\u7740\u4e24\u4e2a\u8fdb\u7a0b.\n\u673a\u5668 0 \u7684\u5e73\u5747\u8017\u65f6: ((1.520 - 0.712) + (4.120 - 3.140)) / 2 = 0.894\n\u673a\u5668 1 \u7684\u5e73\u5747\u8017\u65f6: ((1.550 - 0.550) + (1.420 - 0.430)) / 2 = 0.995\n\u673a\u5668 2 \u7684\u5e73\u5747\u8017\u65f6: ((4.512 - 4.100) + (5.000 - 2.500)) / 2 = 1.456</pre>\n"
+                }
+            }
+        },
+        "english_content": {
+            "data": {
+                "question": {
+                    "content": "<p>Table: <code>Activity</code></p>\n\n<pre>\n+----------------+---------+\n| Column Name    | Type    |\n+----------------+---------+\n| machine_id     | int     |\n| process_id     | int     |\n| activity_type  | enum    |\n| timestamp      | float   |\n+----------------+---------+\nThe table shows the user activities for a factory website.\n(machine_id, process_id, activity_type) is the primary key (combination of columns with unique values) of this table.\nmachine_id is the ID of a machine.\nprocess_id is the ID of a process running on the machine with ID machine_id.\nactivity_type is an ENUM (category) of type (&#39;start&#39;, &#39;end&#39;).\ntimestamp is a float representing the current time in seconds.\n&#39;start&#39; means the machine starts the process at the given timestamp and &#39;end&#39; means the machine ends the process at the given timestamp.\nThe &#39;start&#39; timestamp will always be before the &#39;end&#39; timestamp for every (machine_id, process_id) pair.</pre>\n\n<p>&nbsp;</p>\n\n<p>There is a factory website that has several machines each running the <strong>same number of processes</strong>. Write a solution&nbsp;to find the <strong>average time</strong> each machine takes to complete a process.</p>\n\n<p>The time to complete a process is the <code>&#39;end&#39; timestamp</code> minus the <code>&#39;start&#39; timestamp</code>. The average time is calculated by the total time to complete every process on the machine divided by the number of processes that were run.</p>\n\n<p>The resulting table should have the <code>machine_id</code> along with the <strong>average time</strong> as <code>processing_time</code>, which should be <strong>rounded to 3 decimal places</strong>.</p>\n\n<p>Return the result table in <strong>any order</strong>.</p>\n\n<p>The result format is in the following example.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> \nActivity table:\n+------------+------------+---------------+-----------+\n| machine_id | process_id | activity_type | timestamp |\n+------------+------------+---------------+-----------+\n| 0          | 0          | start         | 0.712     |\n| 0          | 0          | end           | 1.520     |\n| 0          | 1          | start         | 3.140     |\n| 0          | 1          | end           | 4.120     |\n| 1          | 0          | start         | 0.550     |\n| 1          | 0          | end           | 1.550     |\n| 1          | 1          | start         | 0.430     |\n| 1          | 1          | end           | 1.420     |\n| 2          | 0          | start         | 4.100     |\n| 2          | 0          | end           | 4.512     |\n| 2          | 1          | start         | 2.500     |\n| 2          | 1          | end           | 5.000     |\n+------------+------------+---------------+-----------+\n<strong>Output:</strong> \n+------------+-----------------+\n| machine_id | processing_time |\n+------------+-----------------+\n| 0          | 0.894           |\n| 1          | 0.995           |\n| 2          | 1.456           |\n+------------+-----------------+\n<strong>Explanation:</strong> \nThere are 3 machines running 2 processes each.\nMachine 0&#39;s average time is ((1.520 - 0.712) + (4.120 - 3.140)) / 2 = 0.894\nMachine 1&#39;s average time is ((1.550 - 0.550) + (1.420 - 0.430)) / 2 = 0.995\nMachine 2&#39;s average time is ((4.512 - 4.100) + (5.000 - 2.500)) / 2 = 1.456\n</pre>\n",
+                    "editorType": "CKEDITOR",
+                    "mysqlSchemas": [
+                        "Create table If Not Exists Activity (machine_id int, process_id int, activity_type ENUM('start', 'end'), timestamp float)",
+                        "Truncate table Activity",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('0', '0', 'start', '0.712')",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('0', '0', 'end', '1.52')",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('0', '1', 'start', '3.14')",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('0', '1', 'end', '4.12')",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('1', '0', 'start', '0.55')",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('1', '0', 'end', '1.55')",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('1', '1', 'start', '0.43')",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('1', '1', 'end', '1.42')",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('2', '0', 'start', '4.1')",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('2', '0', 'end', '4.512')",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('2', '1', 'start', '2.5')",
+                        "insert into Activity (machine_id, process_id, activity_type, timestamp) values ('2', '1', 'end', '5')"
+                    ],
+                    "dataSchemas": [
+                        "data = [[0, 0, 'start', 0.712], [0, 0, 'end', 1.52], [0, 1, 'start', 3.14], [0, 1, 'end', 4.12], [1, 0, 'start', 0.55], [1, 0, 'end', 1.55], [1, 1, 'start', 0.43], [1, 1, 'end', 1.42], [2, 0, 'start', 4.1], [2, 0, 'end', 4.512], [2, 1, 'start', 2.5], [2, 1, 'end', 5]]\nActivity = pd.DataFrame(data, columns=['machine_id', 'process_id', 'activity_type', 'timestamp']).astype({'machine_id':'Int64', 'process_id':'Int64', 'activity_type':'object', 'timestamp':'Float64'})"
+                    ]
+                }
+            }
+        },
+        "similar_json_data": {
+            "data": {
+                "question": {
+                    "similarQuestions": "[]"
+                }
+            }
+        },
+        "stats_json_data": {
+            "data": {
+                "question": {
+                    "stats": "{\"totalAccepted\": \"15.2K\", \"totalSubmission\": \"21.4K\", \"totalAcceptedRaw\": 15211, \"totalSubmissionRaw\": 21387, \"acRate\": \"71.1%\"}"
+                }
+            }
+        },
+        "title": "Average Time of Process per Machine",
+        "title_cn": "\u6bcf\u53f0\u673a\u5668\u7684\u8fdb\u7a0b\u5e73\u5747\u8fd0\u884c\u65f6\u95f4",
+        "title_slug": "average-time-of-process-per-machine"
+    },
+    {
+        "chinese_content": {
+            "data": {
+                "question": {
+                    "translatedTitle": "\u6700\u957f\u56de\u6587\u5b50\u5e8f\u5217",
+                    "translatedContent": "<p>\u7ed9\u4f60\u4e00\u4e2a\u5b57\u7b26\u4e32 <code>s</code> \uff0c\u627e\u51fa\u5176\u4e2d\u6700\u957f\u7684\u56de\u6587\u5b50\u5e8f\u5217\uff0c\u5e76\u8fd4\u56de\u8be5\u5e8f\u5217\u7684\u957f\u5ea6\u3002</p>\n\n<p>\u5b50\u5e8f\u5217\u5b9a\u4e49\u4e3a\uff1a\u4e0d\u6539\u53d8\u5269\u4f59\u5b57\u7b26\u987a\u5e8f\u7684\u60c5\u51b5\u4e0b\uff0c\u5220\u9664\u67d0\u4e9b\u5b57\u7b26\u6216\u8005\u4e0d\u5220\u9664\u4efb\u4f55\u5b57\u7b26\u5f62\u6210\u7684\u4e00\u4e2a\u5e8f\u5217\u3002</p>\n\n<p>\u00a0</p>\n\n<p><strong>\u793a\u4f8b 1\uff1a</strong></p>\n\n<pre>\n<strong>\u8f93\u5165\uff1a</strong>s = \"bbbab\"\n<strong>\u8f93\u51fa\uff1a</strong>4\n<strong>\u89e3\u91ca\uff1a</strong>\u4e00\u4e2a\u53ef\u80fd\u7684\u6700\u957f\u56de\u6587\u5b50\u5e8f\u5217\u4e3a \"bbbb\" \u3002\n</pre>\n\n<p><strong>\u793a\u4f8b 2\uff1a</strong></p>\n\n<pre>\n<strong>\u8f93\u5165\uff1a</strong>s = \"cbbd\"\n<strong>\u8f93\u51fa\uff1a</strong>2\n<strong>\u89e3\u91ca\uff1a</strong>\u4e00\u4e2a\u53ef\u80fd\u7684\u6700\u957f\u56de\u6587\u5b50\u5e8f\u5217\u4e3a \"bb\" \u3002\n</pre>\n\n<p>\u00a0</p>\n\n<p><strong>\u63d0\u793a\uff1a</strong></p>\n\n<ul>\n\t<li><code>1 <= s.length <= 1000</code></li>\n\t<li><code>s</code> \u4ec5\u7531\u5c0f\u5199\u82f1\u6587\u5b57\u6bcd\u7ec4\u6210</li>\n</ul>\n"
+                }
+            }
+        },
+        "english_content": {
+            "data": {
+                "question": {
+                    "content": "<p>Given a string <code>s</code>, find <em>the longest palindromic <strong>subsequence</strong>&#39;s length in</em> <code>s</code>.</p>\n\n<p>A <strong>subsequence</strong> is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;bbbab&quot;\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> One possible longest palindromic subsequence is &quot;bbbb&quot;.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;cbbd&quot;\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> One possible longest palindromic subsequence is &quot;bb&quot;.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 1000</code></li>\n\t<li><code>s</code> consists only of lowercase English letters.</li>\n</ul>\n",
+                    "editorType": "CKEDITOR",
+                    "mysqlSchemas": [],
+                    "dataSchemas": []
+                }
+            }
+        },
+        "similar_json_data": {
+            "data": {
+                "question": {
+                    "similarQuestions": "[{\"title\": \"Longest Palindromic Substring\", \"titleSlug\": \"longest-palindromic-substring\", \"difficulty\": \"Medium\", \"translatedTitle\": \"\\u6700\\u957f\\u56de\\u6587\\u5b50\\u4e32\", \"isPaidOnly\": false}, {\"title\": \"Palindromic Substrings\", \"titleSlug\": \"palindromic-substrings\", \"difficulty\": \"Medium\", \"translatedTitle\": \"\\u56de\\u6587\\u5b50\\u4e32\", \"isPaidOnly\": false}, {\"title\": \"Count Different Palindromic Subsequences\", \"titleSlug\": \"count-different-palindromic-subsequences\", \"difficulty\": \"Hard\", \"translatedTitle\": \"\\u7edf\\u8ba1\\u4e0d\\u540c\\u56de\\u6587\\u5b50\\u5e8f\\u5217\", \"isPaidOnly\": false}]"
+                }
+            }
+        },
+        "stats_json_data": {
+            "data": {
+                "question": {
+                    "stats": "{\"totalAccepted\": \"193.2K\", \"totalSubmission\": \"287.6K\", \"totalAcceptedRaw\": 193207, \"totalSubmissionRaw\": 287642, \"acRate\": \"67.2%\"}"
+                }
+            }
+        },
+        "title": "Longest Palindromic Subsequence",
+        "title_cn": "\u6700\u957f\u56de\u6587\u5b50\u5e8f\u5217",
+        "title_slug": "longest-palindromic-subsequence"
+    },
+    {
+        "chinese_content": {
+            "data": {
+                "question": {
+                    "translatedTitle": "Excel \u8868\u5217\u5e8f\u53f7",
+                    "translatedContent": "<p>\u7ed9\u4f60\u4e00\u4e2a\u5b57\u7b26\u4e32&nbsp;<code>columnTitle</code> \uff0c\u8868\u793a Excel \u8868\u683c\u4e2d\u7684\u5217\u540d\u79f0\u3002\u8fd4\u56de <em>\u8be5\u5217\u540d\u79f0\u5bf9\u5e94\u7684\u5217\u5e8f\u53f7</em>&nbsp;\u3002</p>\n\n<p>\u4f8b\u5982\uff1a</p>\n\n<pre>\nA -&gt; 1\nB -&gt; 2\nC -&gt; 3\n...\nZ -&gt; 26\nAA -&gt; 27\nAB -&gt; 28 \n...</pre>\n\n<p>&nbsp;</p>\n\n<p><strong>\u793a\u4f8b 1:</strong></p>\n\n<pre>\n<strong>\u8f93\u5165:</strong> columnTitle = \"A\"\n<strong>\u8f93\u51fa:</strong> 1\n</pre>\n\n<p><strong>\u793a\u4f8b&nbsp;2:</strong></p>\n\n<pre>\n<strong>\u8f93\u5165: </strong>columnTitle = \"AB\"\n<strong>\u8f93\u51fa:</strong> 28\n</pre>\n\n<p><strong>\u793a\u4f8b&nbsp;3:</strong></p>\n\n<pre>\n<strong>\u8f93\u5165: </strong>columnTitle = \"ZY\"\n<strong>\u8f93\u51fa:</strong> 701</pre>\n\n<p>&nbsp;</p>\n\n<p><strong>\u63d0\u793a\uff1a</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= columnTitle.length &lt;= 7</code></li>\n\t<li><code>columnTitle</code> \u4ec5\u7531\u5927\u5199\u82f1\u6587\u7ec4\u6210</li>\n\t<li><code>columnTitle</code> \u5728\u8303\u56f4 <code>[\"A\", \"FXSHRXW\"]</code> \u5185</li>\n</ul>\n"
+                }
+            }
+        },
+        "english_content": {
+            "data": {
+                "question": {
+                    "content": "<p>Given a string <code>columnTitle</code> that represents the column title as appears in an Excel sheet, return <em>its corresponding column number</em>.</p>\n\n<p>For example:</p>\n\n<pre>\nA -&gt; 1\nB -&gt; 2\nC -&gt; 3\n...\nZ -&gt; 26\nAA -&gt; 27\nAB -&gt; 28 \n...\n</pre>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> columnTitle = &quot;A&quot;\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> columnTitle = &quot;AB&quot;\n<strong>Output:</strong> 28\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> columnTitle = &quot;ZY&quot;\n<strong>Output:</strong> 701\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= columnTitle.length &lt;= 7</code></li>\n\t<li><code>columnTitle</code> consists only of uppercase English letters.</li>\n\t<li><code>columnTitle</code> is in the range <code>[&quot;A&quot;, &quot;FXSHRXW&quot;]</code>.</li>\n</ul>\n",
+                    "editorType": "CKEDITOR",
+                    "mysqlSchemas": [],
+                    "dataSchemas": []
+                }
+            }
+        },
+        "similar_json_data": {
+            "data": {
+                "question": {
+                    "similarQuestions": "[{\"title\": \"Excel Sheet Column Title\", \"titleSlug\": \"excel-sheet-column-title\", \"difficulty\": \"Easy\", \"translatedTitle\": \"Excel\\u8868\\u5217\\u540d\\u79f0\", \"isPaidOnly\": false}]"
+                }
+            }
+        },
+        "stats_json_data": {
+            "data": {
+                "question": {
+                    "stats": "{\"totalAccepted\": \"168.2K\", \"totalSubmission\": \"235.9K\", \"totalAcceptedRaw\": 168192, \"totalSubmissionRaw\": 235861, \"acRate\": \"71.3%\"}"
+                }
+            }
+        },
+        "title": "Excel Sheet Column Number",
+        "title_cn": "Excel \u8868\u5217\u5e8f\u53f7",
+        "title_slug": "excel-sheet-column-number"
+    }
+]
