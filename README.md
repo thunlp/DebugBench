@@ -1,10 +1,12 @@
 # Repo of DebugBench
 
-![icon](figs/icon.png)
-
-![pipeline](figs/pipeline.png)
+<img src="figs/icon.png" alt="icon" style="zoom:10%;" /> 
 
 Implementation for paper DebugBench: Evaluating Debugging Capabilities of Large Language Models with datasets, prompts, model outputs.
+
+<img src="figs/pipeline.png" alt="pipeline" style="zoom: 50%;" />
+
+
 
 
 
