@@ -1,0 +1,10 @@
+numpy~=1.25.2
+matplotlib~=3.7.2
+openai~=0.28.0
+tqdm~=4.66.1
+transformers~=4.31.0
+pydantic~=2.3.0
+python-dotenv~=0.21.1
+gym~=0.26.2
+bs4~=0.0.1
+beautifulsoup4~=4.12.2
