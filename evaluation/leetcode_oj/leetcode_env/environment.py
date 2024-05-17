@@ -32,7 +32,7 @@ class LeetCodeEnv(gym.Env):
 
         # From Dev Tools/Application/Cookies/LEETCODE_SESSION
         leetcode_session = os.environ["LEETCODE_SESSION"]
-        csrf_token = leetcode.auth.get_csrf_cookie(leetcode_session)
+        csrf_token = os.environ["CSRF_TOKEN"]
 
         configuration.api_key["x-csrftoken"] = csrf_token
         configuration.api_key["csrftoken"] = csrf_token
