@@ -10,8 +10,6 @@ import leetcode.auth
 from .types import LeetCodeSubmission
 from .utils.leetcode import id_from_slug
 
-dotenv.load_dotenv()
-
 
 class LeetCodeEnv(gym.Env):
     """
@@ -20,19 +18,21 @@ class LeetCodeEnv(gym.Env):
 
     metadata = {"render.modes": ["human"]}
 
-    def __init__(self, cooldown=0):
+    def __init__(self, leetcode_session=None, csrf_token=None, cooldown=0):
+        dotenv.load_dotenv()
         super(LeetCodeEnv, self).__init__()
-        self.__configure_leetcode()
         self.reward = False
         self.last_run = None
         self.cooldown = cooldown  # To avoid rate limit
+        self.leetcode_session = leetcode_session
+        self.csrf_token = csrf_token
+        self.__configure_leetcode()
+        
 
     def __configure_leetcode(self):
         configuration = leetcode.Configuration()
-
-        # From Dev Tools/Application/Cookies/LEETCODE_SESSION
-        leetcode_session = os.environ["LEETCODE_SESSION"]
-        csrf_token = os.environ["CSRF_TOKEN"]
+        leetcode_session = self.leetcode_session
+        csrf_token = self.csrf_token
 
         configuration.api_key["x-csrftoken"] = csrf_token
         configuration.api_key["csrftoken"] = csrf_token
@@ -82,6 +82,7 @@ class LeetCodeEnv(gym.Env):
             lang=sub.lang.value,
         )
 
+        # bug: leetcode.rest.ApiException: (403) Reason: Forbidden
         submission_id = self.api_instance.problems_problem_submit_post(
             problem=sub.question_slug, body=submission
         )

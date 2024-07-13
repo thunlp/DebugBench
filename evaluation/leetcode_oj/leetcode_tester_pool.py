@@ -1,8 +1,26 @@
+from leetcode_tester import LeetCodeTester
+import dotenv
 import os
-from leetcode_env.environment import LeetCodeEnv
-from leetcode_env.types import LeetCodeSubmission, ProgrammingLanguage
+import time
 
-TEST_CASE = {"task_id": "make-number-of-distinct-characters-equal",
+class LeetCodeTesterPool:
+    def __init__(self, leetcode_sessions, csrf_tokens, cooldown=10):
+        self.testers = [LeetCodeTester(leetcode_session, csrf_token, cooldown=cooldown) for leetcode_session, csrf_token in zip(leetcode_sessions, csrf_tokens)]
+        self.current_tester_index = 0
+
+    def test(self, code: str, task_id: str, language: str) -> tuple[bool, dict]:
+        tester = self.testers[self.current_tester_index]
+        try:
+            return tester.test(code, task_id, language)
+        except Exception as e:
+            print(f"Tester {self.current_tester_index} failed with error: {e}")
+            time.sleep(10)
+            self.current_tester_index = (self.current_tester_index + 1) % len(self.testers)
+            return self.test(code, task_id, language)  # Recursively try the next tester
+
+if __name__ == '__main__':
+    
+    TEST_CASE = {"task_id": "make-number-of-distinct-characters-equal",
              "description": "You are given two 0-indexed strings word1 and word2.\nA move consists of choosing two indices i and j such that 0 <= i < word1.length and 0 <= j < word2.length and swapping word1[i] with word2[j].\nReturn True if it is possible to get the number of distinct characters in word1 and word2 to be equal with exactly one move. Return False otherwise.",
              "example": [{"input": "word1 = \"ac\", word2 = \"b\"", "output": "False",
                           "explanations": "Any pair of swaps would yield two distinct characters in the first string, and one in the second string."},
@@ -15,38 +33,19 @@ TEST_CASE = {"task_id": "make-number-of-distinct-characters-equal",
              "problematic_code": "class Solution:\n\n    def insertAndRemove(self, mp, toInsert, toRemove):\n        mp[toInsert] += 1\n        mp[toRemove] -= 1\n\n        if(mp[toRemove] == 0):\n            del mp[toRemove]\n\n    def isItPossible(self, word1: str, word2: str) -> bool:\n\n        mp1, mp2 = Counter(word1), Counter(word2)\n\n        for c1 in string.ascii_lowercase:\n            for c2 in string.ascii_lowercase:\n\n                self.insertAndRemove(mp1, c2, c1);\n                self.insertAndRemove(mp2, c1, c2);\n\n                if len(mp1) == len(mp2):\n                    return True\n\n                self.insertAndRemove(mp1, c1, c2);\n                self.insertAndRemove(mp2, c2, c1);\n        return False",
              "error_message": "Traceback (most recent call last):\n  File \"LeetCodeBug/bug_generation/src/tmp.py\", line 26, in <module>\n    assert Solution().isItPossible(word1 = \"ac\", word2 = \"b\") == False\n  File \"LeetCodeBug/bug_generation/src/tmp.py\", line 12, in isItPossible\n    mp1, mp2 = Counter(word1), Counter(word2)\nNameError: name 'Counter' is not defined\n",
              "level": "medium"}
+    
+    dotenv.load_dotenv()
+    
+    leetcode_sessions = [os.getenv(f'YOUR_LEETCODE_SESSION{i}') for i in range(1, 2)]
+    csrf_tokens = [os.getenv(f'YOUR_CSRF_TOKEN{i}') for i in range(1, 2)]
+    
+    pools = LeetCodeTesterPool(leetcode_sessions=leetcode_sessions, csrf_tokens=csrf_tokens)
 
-leetcode_session = os.environ['LEETCODE_SESSION']
-csrf_token = os.environ['CSRF_TOKEN']
-
-class LeetCodeTester(object):
-
-    def __init__(self, leetcode_session: str=None, csrf_token: str=None, cooldown: int=10):
-
-        self.env = LeetCodeEnv(cooldown=cooldown, leetcode_session=leetcode_session, csrf_token=csrf_token)
-        self.lang_dict = {
-            "python": ProgrammingLanguage.PYTHON3,
-            "python3": ProgrammingLanguage.PYTHON3,
-            "java": ProgrammingLanguage.JAVA,
-            "c": ProgrammingLanguage.C,
-            "cpp": ProgrammingLanguage.CPP,
-        }
-
-    def test(self, code: str, task_id: str, language: str) -> tuple[bool, dict]:
-
-        lang = self.lang_dict.get(language)
-        sub = LeetCodeSubmission(code=code, lang=lang, question_slug=task_id)
-        status, reward, done, submission_result = self.env.step(sub)
-        return reward, submission_result
-
-
-if __name__ == '__main__':
-
-    tester = LeetCodeTester(leetcode_session=leetcode_session, csrf_token=csrf_token, cooldown=10)
     task_id = TEST_CASE['task_id']
     code0 = TEST_CASE['original_code']
     code1 = TEST_CASE['problematic_code']
     codes = [code0, code1]
 
     for code in codes:
-        print(tester.test(code, task_id, "python"))
+        print(pools.test(code, task_id, "python"))
+    
